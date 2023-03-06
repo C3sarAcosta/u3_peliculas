@@ -31,7 +31,7 @@ class MovieSlider extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 20,
-              itemBuilder: (_, int index) => _MoviePoster(),
+              itemBuilder: (_, int index) => const _MoviePoster(),
             ),
           ),
         ],
