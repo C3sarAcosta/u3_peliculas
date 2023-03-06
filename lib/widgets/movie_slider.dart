@@ -9,8 +9,7 @@ class MovieSlider extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: size.height * 0.25,
-      color: Colors.red,
+      height: size.height * 0.30,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,6 +22,9 @@ class MovieSlider extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          const SizedBox(
+            height: 5,
           ),
           //Si no lo pongo mostrara error ya que la columna no sabe que tamaño es
           Expanded(
@@ -47,10 +49,34 @@ class _MoviePoster extends StatelessWidget {
     return Container(
       width: 130,
       height: 190,
-      color: Colors.green,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, 'details', arguments: ''),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: const FadeInImage(
+                placeholder: AssetImage('assets/no-image.jpg'),
+                image: NetworkImage('https://via.placeholder.com/300x400'),
+                width: 130,
+                height: 185,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          const Text(
+            'Cupidatat amet dolore eu aute ad duis mollit sint exercitation incididunt esse quis in qui.',
+            //Numero de lineas a mostrar
+            maxLines: 3,
+            //Puntos supensivos cuando el texto ya no cabe
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          )
+        ],
       ),
     );
   }
