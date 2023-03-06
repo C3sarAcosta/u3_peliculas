@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:u3_peliculas/widgets/card_swiper.dart';
+import 'package:u3_peliculas/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,11 +21,15 @@ class HomeScreen extends StatelessWidget {
           child: Text('Películas en cines'),
         ),
       ),
-      body: const Column(
-        children: [
-          CardSwiper()
-          // TODO: Listado horizontal de peliculas
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            //Peliculas en cartelera
+            CardSwiper(),
+            //Peliculas  slider
+            MovieSlider(),
+          ],
+        ),
       ),
     );
   }
