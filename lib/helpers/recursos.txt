@@ -1,0 +1,2 @@
+card_swiper 2.0.4 
+https://pub.dev/packages/card_swiper
