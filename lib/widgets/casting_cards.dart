@@ -12,7 +12,7 @@ class CastingCards extends StatelessWidget {
       child: ListView.builder(
         itemCount: 12,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (_, int index) => _CastCard(),
+        itemBuilder: (_, int index) => const _CastCard(),
       ),
     );
   }
@@ -24,7 +24,7 @@ class _CastCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       width: 110,
       height: 100,
       child: Column(
@@ -39,7 +39,7 @@ class _CastCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           const Text(
             'Elit consequat consectetur aliqua exercitation consequat est adipisicing ex.',
             maxLines: 2,
