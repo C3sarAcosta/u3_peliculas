@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:u3_peliculas/models/now_playing_response.dart';
+import '../models/models.dart';
 
 //El provaider es el proveedor de la informacion
 class MoviesProvider extends ChangeNotifier {
   String _baseUrl = 'api.themoviedb.org';
   String _apiKey = '9dc27117b000e7e5acfb365fa957971a';
   String _language = 'es-MX';
+
+  List<Movie> onDisplayMovies = [];
 
   MoviesProvider() {
     print('MoviesProvider inicializado');
@@ -20,8 +23,11 @@ class MoviesProvider extends ChangeNotifier {
 
     final nowPlayingResponse = NowPlayingResponse.fromRawJson(response.body);
 
-    print(nowPlayingResponse.results[0].title);
-
+    //print(nowPlayingResponse.results[0].title);
+    onDisplayMovies = nowPlayingResponse.results;
+    //notifyListeners(); Le comunica a todos los widgets que estan escuchando
+    //que se cambio la data por lo tanto se redibujan.
+    notifyListeners();
     //print(response.body);
   }
 }
