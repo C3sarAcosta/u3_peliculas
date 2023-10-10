@@ -12,6 +12,7 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> onDisplayMovies = [];
   List<Movie> popularlayMovies = [];
+  Map<int, List<Cast>> moviesCast = {};
 
   MoviesProvider() {
     //print('MoviesProvider inicializado');
@@ -45,5 +46,18 @@ class MoviesProvider extends ChangeNotifier {
     //Concatenar las peliculas
     popularlayMovies = [...popularlayMovies, ...popularResponse.results];
     notifyListeners();
+  }
+
+  Future<List<Cast>> getMovieCast(int movieId) async {
+    if (moviesCast.containsKey(movieId)) return moviesCast[movieId]!;
+
+    var url = Uri.https(_baseUrl, '3/movie/$movieId/credits',
+        {'api_key': _apiKey, 'language': _language, 'page': '1'});
+    final response = await http.get(url);
+    final creditsResponse = CreditsResponse.fromJson(response.body);
+
+    moviesCast[movieId] = creditsResponse.cast;
+
+    return creditsResponse.cast;
   }
 }
