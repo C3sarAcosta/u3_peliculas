@@ -14,7 +14,7 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> popularlayMovies = [];
 
   MoviesProvider() {
-    print('MoviesProvider inicializado');
+    //print('MoviesProvider inicializado');
     getOnDisplayMovies();
     getPopularMovies();
   }

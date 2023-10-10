@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     //Colocamos la instancia de MoviesProvider en mi variable moviesProvider
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
-    print(moviesProvider.onDisplayMovies);
+    //print(moviesProvider.onDisplayMovies);
 
     return Scaffold(
       appBar: AppBar(
