@@ -12,6 +12,7 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> onDisplayMovies = [];
   List<Movie> popularlayMovies = [];
+  //LLenar los actores int = id de la pelicula
   Map<int, List<Cast>> moviesCast = {};
 
   MoviesProvider() {
@@ -48,7 +49,9 @@ class MoviesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //Metodo para obtener el cast
   Future<List<Cast>> getMovieCast(int movieId) async {
+    //Revisamos el mapa para determiar si existe en memoria los actores
     if (moviesCast.containsKey(movieId)) return moviesCast[movieId]!;
 
     var url = Uri.https(_baseUrl, '3/movie/$movieId/credits',

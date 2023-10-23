@@ -12,15 +12,18 @@ class CastingCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Revisamos la instancia de MoviesProvider
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
 
     return FutureBuilder(
       future: moviesProvider.getMovieCast(movieId),
       builder: (_, AsyncSnapshot<List<Cast>> snapshot) {
         if (!snapshot.hasData) {
+          //Mostrar mientras no se tiene la informacion del servidor
           return Container(
             constraints: BoxConstraints(maxWidth: 150),
             height: 180,
+            //Cicrulo de cargando
             child: CupertinoActivityIndicator(),
           );
         }
